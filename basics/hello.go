@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"math"
+	"math/rand"
 	"strings"
 	"time"
 	"unicode/utf8"
@@ -58,7 +60,11 @@ func main() {
 	// operator()
 	// stringOps()
 	// runes()
-	timeFunctions()
+	// timeFunctions()
+
+	// mathOps()
+	// loops()
+	arrays()
 }
 
 func operator() {
@@ -136,4 +142,90 @@ func timeFunctions() {
 
 }
 
-// https://youtu.be/YzLrWHZa-Kc?t=2084
+func mathOps() {
+	pl(5 + 5)
+	pl(5 - 3)
+	mInt := 1
+	mInt += 1
+	pl(mInt)
+	mInt++
+	pl(mInt)
+
+	// random number logic
+	seedSecs := time.Now().UnixNano()
+	r := rand.New(rand.NewSource(seedSecs))
+	ranNum := r.Intn(50) + 1
+	pl("Random: ", ranNum)
+
+	// operators
+	pl("Abs(-12):", math.Abs(-12))
+	pl("Power 2 to 3:", math.Pow(2, 3))
+	pl("Sqrt(9):", math.Sqrt(9))
+
+	// Format specifiers
+	fmt.Printf("%s %d %c %f %t %o %x\n",
+		"stuff", 1, 'A', 3.14, true, 1, 1)
+
+	sp1 := fmt.Sprintf("%9.f\n", 3.141592)
+	pl(sp1)
+}
+
+func loops() {
+	for x := 1; x <= 5; x++ {
+		pl(x)
+	}
+
+	fX := 0
+	for fX < 5 {
+		pl(fX)
+		fX++
+	}
+	pl("Final value of fX:", fX)
+
+	pl("While loop")
+	// while loop
+	fY := 0
+	for { // this equals to `for true {`
+		pl(fY)
+		if fY == 4 {
+			break
+		}
+		fY++
+	}
+
+	pl("iterating through an array")
+	aNums := []int{1, 2, 3, 4}
+	for _, num := range aNums {
+		pl(num)
+	}
+
+}
+
+func arrays() {
+	var arr1 [5]int
+	arr1[0] = 3
+	arr1[2] = 4
+	arr2 := [5]int{1, 2, 3, 4, 5}
+	pl("index 0:", arr2[0])
+	pl("length arr2:", len(arr2))
+
+	for i := 0; i < len(arr2); i++ {
+		pl(arr2[i])
+	}
+	for i, v := range arr2 {
+		fmt.Printf("%d : %d\n", i, v)
+	}
+
+	pl("multi dimensional array")
+	arr3 := [2][3]int{
+		{1, 2, 4},
+		{2, 3, 3},
+	}
+	for i := 0; i < 2; i++ {
+		for j := 0; j < 3; j++ {
+			pl(arr3[i][j])
+		}
+	}
+}
+
+// https://youtu.be/YzLrWHZa-Kc?t=3545
