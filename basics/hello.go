@@ -64,7 +64,9 @@ func main() {
 
 	// mathOps()
 	// loops()
-	arrays()
+	// arrays()
+	strOps()
+
 }
 
 func operator() {
@@ -228,4 +230,35 @@ func arrays() {
 	}
 }
 
-// https://youtu.be/YzLrWHZa-Kc?t=3545
+func strOps() {
+	aStr := "abcde"
+	rArr := []rune(aStr)
+	for _, v := range rArr {
+		fmt.Printf("Rune Array: %d\n", v)
+	}
+	byteArr := []byte{'a', 'b', 'c'}
+	bStr := string(byteArr[:])
+	pl("Byte array to string", bStr)
+
+	sl1 := make([]string, 6)
+	sl1[0] = "hello"
+	sl1[1] = "dddd"
+	sl1[2] = "heldslo"
+	sl1[3] = "helwweelo"
+
+	pl("Length :", len(sl1))
+	for _, v := range sl1 {
+		pl(v)
+	}
+
+	sArr := [5]int{1, 2, 3, 4, 5}
+	sl3 := sArr[0:2]
+	pl("Slice of array", sl3)
+	pl("Slice of array", sArr[3:])
+	// changing array after slicing affects the slice
+	//  also chnaging th slices causes array to change
+	sl4 := make([]string, 6)
+	pl("sl4", sl4[0], "end")
+}
+
+// https://youtu.be/YzLrWHZa-Kc?t=4115
