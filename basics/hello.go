@@ -65,7 +65,27 @@ func main() {
 	// mathOps()
 	// loops()
 	// arrays()
-	strOps()
+	// strOps()
+
+	// sayHello()
+	// sum := getSum(1, 4)
+	// pl(sum)
+
+	// x, y := retMultiple(4)
+	// pl(x, y)
+
+	// q, er := getQuotient(2, 0)
+	// if er == nil {
+	// 	pl(q)
+	// } else {
+	// 	pl(er)
+	// }
+
+	// variadic func
+	// pl(getSum2(1, 2, 3, 4, 5))
+
+	vArr := []int{1, 2, 3, 4, 5}
+	pl(getArr(vArr))
 
 }
 
@@ -261,4 +281,41 @@ func strOps() {
 	pl("sl4", sl4[0], "end")
 }
 
-// https://youtu.be/YzLrWHZa-Kc?t=4115
+func sayHello() {
+	pl("Hello")
+}
+func getSum(x int, y int) int {
+	return x + y
+}
+
+func retMultiple(x int) (int, int) {
+	return x + 1, x + 2
+}
+
+func getQuotient(x float64, y float64) (ans float64, er error) {
+	if y == 0 {
+		return 0, fmt.Errorf("You cant divide by a zero")
+	} else {
+		return x / y, nil
+	}
+}
+
+// variadic function with n no of inputs
+func getSum2(nums ...int) int {
+	sum := 0
+	for _, num := range nums {
+		sum += num
+	}
+	return sum
+}
+
+func getArr(arr []int) int {
+	// pass by value
+	sum := 0
+	for _, num := range arr {
+		sum += num
+	}
+	return sum
+}
+
+// https://youtu.be/YzLrWHZa-Kc?t=4676
