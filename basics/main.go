@@ -84,8 +84,23 @@ func main() {
 	// variadic func
 	// pl(getSum2(1, 2, 3, 4, 5))
 
-	vArr := []int{1, 2, 3, 4, 5}
-	pl(getArr(vArr))
+	// vArr := []int{1, 2, 3, 4, 5}
+	// pl(getArr(vArr))
+
+	f4 := 15
+	var f4Ptr *int = &f4
+	pl("f4 addres", f4Ptr)
+	*f4Ptr = 11
+	pl("f4 value changes", f4)
+	f3 := 10
+	pl("value before change", f3)
+	ptrString(&f3)
+	pl("value after change", f3)
+	pArr := [4]int{1, 2, 3, 4}
+	dblArrVals(&pArr)
+	pl(pArr)
+	iSlice := []float64{11, 13, 12}
+	fmt.Printf("Average: %.3f\n", getAvg(iSlice...))
 
 }
 
@@ -318,4 +333,24 @@ func getArr(arr []int) int {
 	return sum
 }
 
-// https://youtu.be/YzLrWHZa-Kc?t=4676
+func ptrString(myPtr *int) {
+	*myPtr = 12
+}
+
+func dblArrVals(arr *[4]int) {
+	for x := 0; x < 4; x++ {
+		arr[x] *= 2
+	}
+}
+
+func getAvg(nums ...float64) float64 {
+
+	var sum float64 = 0.0
+	var numSize float64 = float64(len(nums))
+	for _, val := range nums {
+		sum += val
+	}
+	return (sum / numSize)
+}
+
+// https://youtu.be/YzLrWHZa-Kc?t=5170
